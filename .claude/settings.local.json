@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run dev)",
+      "Bash(npm install element-plus @element-plus/icons-vue unplugin-vue-components unplugin-auto-import --save)",
+      "Bash(git add .)"
+    ]
+  }
+}
