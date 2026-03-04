@@ -21,9 +21,13 @@ export const useTodoStore = defineStore('todo', () => {
   const filter = ref<FilterType>('all')
 
   // 保存到 localStorage
-  watch(todos, (newTodos) => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(newTodos))
-  }, { deep: true })
+  watch(
+    todos,
+    (newTodos) => {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(newTodos))
+    },
+    { deep: true }
+  )
 
   // 添加待办
   const addTodo = (text: string) => {
@@ -38,7 +42,7 @@ export const useTodoStore = defineStore('todo', () => {
 
   // 切换完成状态
   const toggleTodo = (id: number) => {
-    const todo = todos.value.find(t => t.id === id)
+    const todo = todos.value.find((t) => t.id === id)
     if (todo) {
       todo.completed = !todo.completed
     }
@@ -46,29 +50,29 @@ export const useTodoStore = defineStore('todo', () => {
 
   // 删除待办
   const deleteTodo = (id: number) => {
-    todos.value = todos.value.filter(t => t.id !== id)
+    todos.value = todos.value.filter((t) => t.id !== id)
   }
 
   // 清空已完成
   const clearCompleted = () => {
-    todos.value = todos.value.filter(t => !t.completed)
+    todos.value = todos.value.filter((t) => !t.completed)
   }
 
   // 筛选后的待办列表
   const filteredTodos = () => {
     switch (filter.value) {
       case 'active':
-        return todos.value.filter(t => !t.completed)
+        return todos.value.filter((t) => !t.completed)
       case 'completed':
-        return todos.value.filter(t => t.completed)
+        return todos.value.filter((t) => t.completed)
       default:
         return todos.value
     }
   }
 
   // 统计
-  const activeCount = () => todos.value.filter(t => !t.completed).length
-  const completedCount = () => todos.value.filter(t => t.completed).length
+  const activeCount = () => todos.value.filter((t) => !t.completed).length
+  const completedCount = () => todos.value.filter((t) => t.completed).length
 
   return {
     todos,

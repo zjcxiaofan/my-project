@@ -2,7 +2,7 @@
 import type { Todo } from '@/types/todo'
 import { Delete } from '@element-plus/icons-vue'
 
-const props = defineProps<{
+defineProps<{
   todo: Todo
 }>()
 
@@ -10,33 +10,25 @@ const emit = defineEmits<{
   toggle: [id: number]
   delete: [id: number]
 }>()
-
-const handleToggle = () => {
-  emit('toggle', props.todo.id)
-}
-
-const handleDelete = () => {
-  emit('delete', props.todo.id)
-}
 </script>
 
 <template>
   <div class="todo-item" :class="{ completed: todo.completed }">
     <el-checkbox
-      :model-value="todo.completed"
-      @change="handleToggle"
       class="custom-checkbox"
+      :model-value="todo.completed"
+      @change="emit('toggle', todo.id)"
     >
       <span class="todo-text">{{ todo.text }}</span>
     </el-checkbox>
     <el-button
+      class="delete-btn"
       type="danger"
       :icon="Delete"
       text
       circle
       size="small"
-      class="delete-btn"
-      @click="handleDelete"
+      @click="emit('delete', todo.id)"
     />
   </div>
 </template>

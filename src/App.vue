@@ -2,7 +2,7 @@
 import { useTodoStore } from '@/stores/todoStore'
 import TodoItem from '@/components/TodoItem.vue'
 import type { FilterType } from '@/types/todo'
-import {  EditPen, Plus, Delete, List, Calendar, Check, Clock } from '@element-plus/icons-vue'
+import { EditPen, Plus, Delete, List, Calendar, Check, Clock } from '@element-plus/icons-vue'
 
 const todoStore = useTodoStore()
 const newTodoText = ref('')
@@ -78,11 +78,11 @@ const isActive = (filter: FilterType) => {
             </template>
           </el-input>
           <el-button
+            class="add-btn"
             type="primary"
             size="large"
             @click="handleAddTodo"
             :icon="Plus"
-            class="add-btn"
           >
             添加任务
           </el-button>
@@ -92,10 +92,7 @@ const isActive = (filter: FilterType) => {
       <!-- 筛选区域 -->
       <div class="filter-section">
         <div class="filter-tabs">
-          <button
-            :class="['filter-tab', { active: isActive('all') }]"
-            @click="setFilter('all')"
-          >
+          <button :class="['filter-tab', { active: isActive('all') }]" @click="setFilter('all')">
             <span>全部</span>
             <span class="count">{{ todoStore.todos.length }}</span>
           </button>
@@ -115,12 +112,12 @@ const isActive = (filter: FilterType) => {
           </button>
         </div>
         <el-button
+          class="clear-btn"
           v-if="todoStore.completedCount() > 0"
           type="danger"
           size="small"
           :icon="Delete"
           plain
-          class="clear-btn"
           @click="todoStore.clearCompleted"
         >
           清空已完成
@@ -143,10 +140,12 @@ const isActive = (filter: FilterType) => {
       <!-- 空状态 -->
       <Transition name="fade">
         <el-empty
-          v-if="todoStore.filteredTodos().length === 0"
-          :description="todoStore.filter === 'completed' ? '还没有已完成的任务' : '还没有添加任务哦'"
-          :image-size="100"
           class="empty-state"
+          v-if="todoStore.filteredTodos().length === 0"
+          :description="
+            todoStore.filter === 'completed' ? '还没有已完成的任务' : '还没有添加任务哦'
+          "
+          :image-size="100"
         >
           <template #image>
             <div class="empty-image">
