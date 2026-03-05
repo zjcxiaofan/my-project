@@ -4,7 +4,13 @@
       "Bash(npm run dev)",
       "Bash(npm install element-plus @element-plus/icons-vue unplugin-vue-components unplugin-auto-import --save)",
       "Bash(git add .)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(npm install -D prettier prettier-plugin-vue)",
+      "Bash(npm run format)",
+      "Bash(npm uninstall prettier-plugin-vue)",
+      "Bash(npm install -D prettier-plugin-organize-attributes)",
+      "Bash(git add .prettierrc.json .prettierignore .vscode/extensions.json .vscode/settings.json package.json package-lock.json src/App.vue src/components/TodoItem.vue src/stores/todoStore.ts src/style.scss)",
+      "Bash(git add -f .vscode/settings.json .prettierrc.json .prettierignore .vscode/extensions.json package.json package-lock.json src/App.vue src/components/TodoItem.vue src/stores/todoStore.ts src/style.scss)"
     ]
   }
 }

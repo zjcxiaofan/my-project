@@ -12,11 +12,11 @@ export default defineConfig({
     AutoImport({
       imports: ['vue', 'vue-router', 'pinia'],
       resolvers: [ElementPlusResolver()],
-      dts: 'src/auto-imports.d.ts',
+      dts: 'src/auto-imports.d.ts'
     }),
     Components({
-      resolvers: [ElementPlusResolver()],
-    }),
+      resolvers: [ElementPlusResolver()]
+    })
   ],
   resolve: {
     alias: {

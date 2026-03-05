@@ -15,6 +15,7 @@ npm run preview  # 预览生产构建
 **技术栈**: Vue 3 + TypeScript + Vite + Pinia + Element Plus
 
 **目录结构**:
+
 - `src/main.ts` - 应用入口，注册 Pinia 和 Element Plus
 - `src/App.vue` - 主组件，包含待办事项 UI
 - `src/components/TodoItem.vue` - 单个待办事项组件
@@ -24,6 +25,7 @@ npm run preview  # 预览生产构建
 - `vite.config.ts` - 配置 Element Plus 组件自动导入
 
 **状态管理**: Pinia store (`useTodoStore`) 负责:
+
 - 待办事项 CRUD 操作 (添加、切换完成状态、删除、清空已完成)
 - 筛选功能 (全部/进行中/已完成)
 - 通过 watcher 自动持久化到 localStorage
@@ -46,6 +48,7 @@ npm run preview  # 预览生产构建
 ```
 
 审查维度：
+
 - 命名规范（文件、变量、组件）
 - TypeScript 类型安全
 - Vue 组件结构顺序
@@ -67,18 +70,18 @@ npm run preview  # 预览生产构建
 
 ### 类型说明
 
-| 类型 | 说明 |
-|------|------|
-| `feat` | 新增功能 |
-| `fix` | 修复 bug |
-| `docs` | 文档更新 |
-| `style` | 代码格式调整（不影响代码运行） |
+| 类型       | 说明                                  |
+| ---------- | ------------------------------------- |
+| `feat`     | 新增功能                              |
+| `fix`      | 修复 bug                              |
+| `docs`     | 文档更新                              |
+| `style`    | 代码格式调整（不影响代码运行）        |
 | `refactor` | 重构（既不是新增功能也不是 bug 修复） |
-| `perf` | 性能优化 |
-| `test` | 添加或修改测试 |
-| `chore` | 构建工具、依赖管理、配置文件等变更 |
-| `ci` | CI/CD 配置变更 |
-| `revert` | 回滚提交 |
+| `perf`     | 性能优化                              |
+| `test`     | 添加或修改测试                        |
+| `chore`    | 构建工具、依赖管理、配置文件等变更    |
+| `ci`       | CI/CD 配置变更                        |
+| `revert`   | 回滚提交                              |
 
 ### 书写规则
 
