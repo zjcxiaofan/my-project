@@ -11,6 +11,12 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  // 主题色 CSS 变量（默认紫色）
+  --theme-primary: #667eea;
+  --theme-primary-light: #764ba2;
+  --theme-primary-dark: #5a67d8;
+  --theme-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 * {
@@ -40,6 +46,20 @@ body {
   }
 
   &.is-focus {
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2) !important;
+    box-shadow: 0 0 0 3px rgba(var(--theme-primary), 0.2) !important;
   }
+}
+
+.el-button--primary {
+  background: var(--theme-gradient) !important;
+  border: none !important;
+}
+
+.el-checkbox__input.is-checked .el-checkbox__inner {
+  background: var(--theme-gradient) !important;
+  border-color: transparent !important;
+}
+
+.el-icon {
+  color: var(--theme-primary);
 }

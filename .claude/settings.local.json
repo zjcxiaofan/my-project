@@ -10,7 +10,19 @@
       "Bash(npm uninstall prettier-plugin-vue)",
       "Bash(npm install -D prettier-plugin-organize-attributes)",
       "Bash(git add .prettierrc.json .prettierignore .vscode/extensions.json .vscode/settings.json package.json package-lock.json src/App.vue src/components/TodoItem.vue src/stores/todoStore.ts src/style.scss)",
-      "Bash(git add -f .vscode/settings.json .prettierrc.json .prettierignore .vscode/extensions.json package.json package-lock.json src/App.vue src/components/TodoItem.vue src/stores/todoStore.ts src/style.scss)"
+      "Bash(git add -f .vscode/settings.json .prettierrc.json .prettierignore .vscode/extensions.json package.json package-lock.json src/App.vue src/components/TodoItem.vue src/stores/todoStore.ts src/style.scss)",
+      "Bash(npm run build)",
+      "Bash(ls node_modules/@element-plus/icons-vue/dist/esm/*.js)",
+      "Bash(openspec list changes)",
+      "Bash(openspec list)",
+      "Bash(openspec new change enhance-theme-color-picker)",
+      "Bash(openspec status --change enhance-theme-color-picker --json)",
+      "Bash(openspec instructions proposal --change enhance-theme-color-picker --json)",
+      "Bash(openspec instructions design --change enhance-theme-color-picker --json)",
+      "Bash(openspec instructions specs --change enhance-theme-color-picker --json)",
+      "Bash(openspec instructions tasks --change enhance-theme-color-picker --json)",
+      "Bash(openspec status --change enhance-theme-color-picker)",
+      "Bash(openspec instructions apply --change enhance-theme-color-picker --json)"
     ]
   }
 }

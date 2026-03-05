@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { useTodoStore } from '@/stores/todoStore'
+import { useThemeStore } from '@/stores/themeStore'
 import TodoItem from '@/components/TodoItem.vue'
+import ThemeSwitcher from '@/components/ThemeSwitcher.vue'
 import type { FilterType } from '@/types/todo'
 import { EditPen, Plus, Delete, List, Calendar, Check, Clock } from '@element-plus/icons-vue'
 
 const todoStore = useTodoStore()
+const themeStore = useThemeStore()
 const newTodoText = ref('')
 
 const handleAddTodo = () => {
@@ -31,17 +34,20 @@ const isActive = (filter: FilterType) => {
 </script>
 
 <template>
-  <div class="todo-app">
+  <div class="todo-app" :style="{ background: themeStore.activeThemeConfig.gradient }">
     <div class="app-container">
       <!-- 头部区域 -->
       <header class="header">
         <div class="header-content">
-          <div class="icon-wrapper">
+          <div class="icon-wrapper" :style="{ background: themeStore.activeThemeConfig.gradient }">
             <el-icon :size="40"><Calendar /></el-icon>
           </div>
           <div class="title-wrapper">
             <h1>我的待办</h1>
             <p class="subtitle">今天也要元气满满哦</p>
+          </div>
+          <div class="header-actions">
+            <ThemeSwitcher />
           </div>
         </div>
         <div class="stats">
@@ -50,7 +56,10 @@ const isActive = (filter: FilterType) => {
             <span class="stat-num">{{ todoStore.todos.length }}</span>
             <span class="stat-label">总数</span>
           </div>
-          <div class="stat-item active">
+          <div
+            class="stat-item active"
+            :style="{ background: themeStore.activeThemeConfig.gradient }"
+          >
             <el-icon><Clock /></el-icon>
             <span class="stat-num">{{ todoStore.activeCount() }}</span>
             <span class="stat-label">进行中</span>
@@ -148,7 +157,7 @@ const isActive = (filter: FilterType) => {
           :image-size="100"
         >
           <template #image>
-            <div class="empty-image">
+            <div class="empty-image" :style="{ background: themeStore.activeThemeConfig.gradient }">
               <el-icon :size="48"><List /></el-icon>
             </div>
           </template>
@@ -162,8 +171,8 @@ const isActive = (filter: FilterType) => {
 .todo-app {
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 40px 20px;
+  transition: background 0.3s ease;
 }
 
 .app-container {
@@ -179,24 +188,35 @@ const isActive = (filter: FilterType) => {
   padding: 28px;
   margin-bottom: 24px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 9;
 
   .header-content {
     display: flex;
     align-items: center;
     gap: 16px;
     margin-bottom: 24px;
+    position: relative;
   }
 
   .icon-wrapper {
     width: 64px;
     height: 64px;
     border-radius: 20px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4);
+    transition: background 0.3s ease;
+  }
+
+  .header-actions {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 8px;
   }
 
   .title-wrapper {
@@ -247,7 +267,7 @@ const isActive = (filter: FilterType) => {
       }
 
       &.active {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: v-bind('themeStore.activeThemeConfig.gradient');
 
         .el-icon,
         .stat-num,
@@ -283,7 +303,7 @@ const isActive = (filter: FilterType) => {
     gap: 12px;
 
     .add-btn {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: v-bind('themeStore.activeThemeConfig.gradient');
       border: none;
       padding: 0 32px;
       font-weight: 600;
@@ -341,7 +361,7 @@ const isActive = (filter: FilterType) => {
       }
 
       &.active {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: v-bind('themeStore.activeThemeConfig.gradient');
         color: white;
 
         .count {
@@ -378,12 +398,12 @@ const isActive = (filter: FilterType) => {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     margin: 0 auto 16px;
+    transition: background 0.3s ease;
   }
 
   :deep(.el-empty__description) {
